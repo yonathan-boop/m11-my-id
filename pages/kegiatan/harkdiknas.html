@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kegiatan Harkdiknas 2024 - Yayasan Pendidikan Kristen Methodist Titus TK-SD-SMP Swasta Methodist-11</title>
+<meta name="description" content="Kegiatan memperingati Hari Pendidikan Nasional (Harkdiknas) di TK-SD-SMP Swasta Methodist-11 Medan.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://methodist-11.my.id/pages/kegiatan/harkdiknas.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Methodist-11 Medan">
+<meta property="og:locale" content="id_ID">
+<meta property="og:title" content="Kegiatan Harkdiknas 2024 - Yayasan Pendidikan Kristen Methodist Titus TK-SD-SMP Swasta Methodist-11">
+<meta property="og:description" content="Kegiatan memperingati Hari Pendidikan Nasional (Harkdiknas) di TK-SD-SMP Swasta Methodist-11 Medan.">
+<meta property="og:url" content="https://methodist-11.my.id/pages/kegiatan/harkdiknas.html">
+<meta property="og:image" content="https://methodist-11.my.id/assets/images/kegiatan.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kegiatan Harkdiknas 2024 - Yayasan Pendidikan Kristen Methodist Titus TK-SD-SMP Swasta Methodist-11">
+<meta name="twitter:description" content="Kegiatan memperingati Hari Pendidikan Nasional (Harkdiknas) di TK-SD-SMP Swasta Methodist-11 Medan.">
+<meta name="twitter:image" content="https://methodist-11.my.id/assets/images/kegiatan.jpg">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('m11-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { }
+    })();
+  </script>
+  <link rel="stylesheet" href="../../assets/css/style.css?v=30">
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo cursor-pointer" href="/">
+        <img src="../../assets/images/Picture1.png" alt="Logo Methodist-11">
+        <span class="logo-txt">
+          <span class="logo-full">Yayasan Pendidikan Kristen Methodist Titus</span>
+          <span class="logo-sub">TK-SD-SMP Swasta Methodist-11</span>
+        </span>
+      </a>
+      <nav id="menu">
+        <div class="menu-row">
+          <a href="../../index.html#beranda">Beranda</a>
+          <a href="../../index.html#kenapa">Kenapa Kami</a>
+          <a href="../../index.html#visi">Visi & Misi</a>
+          <a href="../../index.html#fasilitas">Fasilitas</a>
+          <a href="../../index.html#pengumuman">Berita</a>
+        </div>
+        <div class="menu-row">
+          <a href="../../index.html#kegiatan">Kegiatan</a>
+          <a href="../../index.html#galeri">Galeri</a>
+          <a href="../../index.html#lokasi">Lokasi</a>
+          <a href="../../index.html#kontak">Kontak</a>
+          <a href="../kalender.html">📅 Kalender Pendidikan</a>
+        </div>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Ganti mode gelap terang" title="Mode gelap">🌙</button>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Kegiatan Harkdiknas 2024</h1>
+      <div class="tgl">2 Mei 2024</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <a class="back" href="../../index.html#kegiatan">← Kembali ke Kegiatan</a>
+      <div class="artikel">
+        <p>Dalam rangka memperingati Hari Pendidikan Nasional, seluruh siswa, guru, dan staf SD Methodist-11 mengikuti upacara bendera dan berbagai kegiatan edukatif. Suasana penuh semangat mewarnai seluruh rangkaian acara.</p>
+        <p>Kegiatan ini menjadi momen untuk mengenang jasa para pahlawan pendidikan sekaligus menumbuhkan rasa cinta tanah air kepada seluruh siswa. Berikut dokumentasinya:</p>
+      </div>
+      <div class="foto-grid">
+        <img src="../../assets/images/kegiatan/harkdiknas-1.jpg" alt="Harkdiknas 1" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="../../assets/images/kegiatan/harkdiknas-2.jpg" alt="Harkdiknas 2" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="../../assets/images/kegiatan/harkdiknas-3.jpg" alt="Harkdiknas 3" onclick="openLightbox(this.src)" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
+    <div class="footer-meta">Versi 0.0014</div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" onclick="lightboxBg(event)">
+    <button class="lb-btn lb-close" onclick="closeLightbox()">✕</button>
+    <button class="lb-btn lb-prev" onclick="lbNav(-1)">‹</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-btn lb-next" onclick="lbNav(1)">›</button>
+    <div class="lb-counter" id="lb-counter"></div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      var el = document.documentElement;
+      var t = el.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      el.setAttribute('data-theme', t);
+      try { localStorage.setItem('m11-theme', t); } catch (e) { }
+      var b = document.getElementById('theme-toggle');
+      if (b) b.textContent = t === 'dark' ? '☀️' : '🌙';
+    }
+    (function () {
+      var b = document.getElementById('theme-toggle');
+      if (b) b.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+    })();
+
+    function toggleMenu() { document.getElementById('menu').classList.toggle('open'); }
+
+    function closeMenu() { document.getElementById('menu').classList.remove('open'); }
+
+    document.querySelectorAll('#menu a').forEach(function (a) {
+      a.addEventListener('click', closeMenu);
+    });
+
+    let lbItems = [];
+    let lbIdx = 0;
+
+    function galeriItems() {
+      const imgs = document.querySelectorAll('.foto-grid img');
+      return Array.prototype.slice.call(imgs).map(function (i) { return i.src; });
+    }
+
+    function openLightbox(src) {
+      lbItems = galeriItems();
+      lbIdx = lbItems.indexOf(src);
+      if (lbIdx === -1) lbIdx = 0;
+      showLb();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function lightboxBg(e) {
+      if (e.target.id === 'lightbox') closeLightbox();
+    }
+
+    function showLb() {
+      const img = document.getElementById('lb-img');
+      img.src = lbItems[lbIdx];
+      document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbItems.length;
+    }
+
+    function lbNav(d) {
+      lbIdx = (lbIdx + d + lbItems.length) % lbItems.length;
+      showLb();
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lbNav(-1);
+      if (e.key === 'ArrowRight') lbNav(1);
+    });
+  </script>
+</body>
+</html>

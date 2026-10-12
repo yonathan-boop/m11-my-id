@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Tools internal (Generator RPP) tidak diindeks
+Disallow: /rpp/
+
+Sitemap: https://methodist-11.my.id/sitemap.xml
