@@ -62,7 +62,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="assets/css/style.css?v=36">
+<link rel="stylesheet" href="assets/css/style.css?v=37">
 </head>
 <body class="has-ticker">
 
@@ -450,7 +450,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0020</div>
+  <div class="footer-meta">Versi 0.0021</div>
 </footer>
 
 <!-- Running Text Pengumuman PPDB di Bagian Bawah -->
@@ -529,10 +529,50 @@
 
   function toggleMenu() { document.getElementById('menu').classList.toggle('open'); }
 
-  function closeMenu() { document.getElementById('menu').classList.remove('open'); }
+  function closeMenu() {
+    var m = document.getElementById('menu');
+    if (m) m.classList.remove('open');
+  }
 
-  document.querySelectorAll('#menu a').forEach(function (a) {
-    a.addEventListener('click', closeMenu);
+  // Smooth Scrolling untuk seluruh tautan navigasi dan anchor di halaman
+  document.querySelectorAll('a[href*="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var href = a.getAttribute('href');
+      if (!href || href === '#' || href.startsWith('http') || a.getAttribute('target') === '_blank') return;
+      var hash = href.includes('#') ? href.substring(href.indexOf('#')) : '';
+      if (!hash || hash === '#') return;
+      
+      var target = document.querySelector(hash);
+      if (target) {
+        e.preventDefault();
+        closeMenu();
+        var header = document.querySelector('header');
+        var offset = header ? header.offsetHeight : 76;
+        var targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+        if (history.pushState) {
+          history.pushState(null, null, hash);
+        } else {
+          window.location.hash = hash;
+        }
+      }
+    });
+  });
+
+  // Gliding smooth scroll saat mendarat dari halaman lain dengan hash di URL
+  window.addEventListener('load', function () {
+    if (window.location.hash) {
+      var hash = window.location.hash;
+      var target = document.querySelector(hash);
+      if (target) {
+        setTimeout(function () {
+          var header = document.querySelector('header');
+          var offset = header ? header.offsetHeight : 76;
+          var targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        }, 120);
+      }
+    }
   });
 
   (function () {

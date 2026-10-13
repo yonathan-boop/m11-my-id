@@ -25,9 +25,47 @@ function toggleMenu(force) {
   button.textContent = open ? '✕' : '☰';
 }
 syncTheme();
-document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+document.querySelectorAll('#menu a, a[href*="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('http') || a.getAttribute('target') === '_blank') return;
+    const hash = href.includes('#') ? href.substring(href.indexOf('#')) : '';
+    if (!hash || hash === '#') return;
+    const target = document.querySelector(hash);
+    if (target) {
+      e.preventDefault();
+      toggleMenu(false);
+      const header = document.querySelector('header');
+      const offset = header ? header.offsetHeight : 76;
+      const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      if (history.pushState) {
+        history.pushState(null, null, hash);
+      } else {
+        window.location.hash = hash;
+      }
+    } else {
+      toggleMenu(false);
+    }
+  });
+});
 document.addEventListener('click', event => {
   if (!event.target.closest('header')) toggleMenu(false);
+});
+
+// Gliding smooth scroll saat mendarat dari halaman lain dengan hash di URL
+window.addEventListener('load', () => {
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      setTimeout(() => {
+        const header = document.querySelector('header');
+        const offset = header ? header.offsetHeight : 76;
+        const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+      }, 120);
+    }
+  }
 });
 
 let lbItems = [];
