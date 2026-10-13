@@ -1829,6 +1829,10 @@ footer {
   color: #60a5fa !important;
 }
 
+[data-theme="dark"] .logo img {
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.95)) drop-shadow(0 2px 8px rgba(56, 189, 248, 0.45));
+}
+
 [data-theme="dark"] nav a {
   color: #f1f5f9 !important;
 }
