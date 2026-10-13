@@ -62,7 +62,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="assets/css/style.css?v=37">
+<link rel="stylesheet" href="assets/css/style.css?v=38">
 </head>
 <body class="has-ticker">
 
@@ -450,7 +450,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0021</div>
+  <div class="footer-meta">Versi 0.0022</div>
 </footer>
 
 <!-- Running Text Pengumuman PPDB di Bagian Bawah -->
@@ -534,32 +534,76 @@
     if (m) m.classList.remove('open');
   }
 
-  // Smooth Scrolling untuk seluruh tautan navigasi dan anchor di halaman
+  // Cinematic Smooth Scroll Engine (Mencegah Teleportasi & Menghasilkan Efek Meluncur Mulus)
+  var scrollAnimId = null;
+  function smoothScrollToY(targetY, duration) {
+    if (scrollAnimId) cancelAnimationFrame(scrollAnimId);
+
+    var startY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var distance = targetY - startY;
+    if (Math.abs(distance) < 4) return;
+
+    duration = duration || Math.min(850, Math.max(480, Math.round(Math.abs(distance) * 0.28)));
+    var startTime = null;
+
+    var prevScrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    document.body.style.scrollBehavior = 'auto';
+
+    function easeInOutCubic(t) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var elapsed = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var ease = easeInOutCubic(progress);
+      var currentY = startY + (distance * ease);
+
+      window.scrollTo(0, Math.round(currentY));
+
+      if (progress < 1) {
+        scrollAnimId = requestAnimationFrame(step);
+      } else {
+        window.scrollTo(0, Math.round(targetY));
+        document.documentElement.style.scrollBehavior = prevScrollBehavior;
+        document.body.style.scrollBehavior = prevScrollBehavior;
+        scrollAnimId = null;
+      }
+    }
+
+    scrollAnimId = requestAnimationFrame(step);
+  }
+
+  window.addEventListener('wheel', function () {
+    if (scrollAnimId) { cancelAnimationFrame(scrollAnimId); scrollAnimId = null; }
+  }, { passive: true });
+  window.addEventListener('touchmove', function () {
+    if (scrollAnimId) { cancelAnimationFrame(scrollAnimId); scrollAnimId = null; }
+  }, { passive: true });
+
+  // Event listener klik anchor navbar dan tombol dalam halaman
   document.querySelectorAll('a[href*="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var href = a.getAttribute('href');
       if (!href || href === '#' || href.startsWith('http') || a.getAttribute('target') === '_blank') return;
       var hash = href.includes('#') ? href.substring(href.indexOf('#')) : '';
       if (!hash || hash === '#') return;
-      
+
       var target = document.querySelector(hash);
       if (target) {
         e.preventDefault();
         closeMenu();
         var header = document.querySelector('header');
         var offset = header ? header.offsetHeight : 76;
-        var targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
-        if (history.pushState) {
-          history.pushState(null, null, hash);
-        } else {
-          window.location.hash = hash;
-        }
+        var targetY = Math.max(0, target.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - offset);
+        smoothScrollToY(targetY);
       }
     });
   });
 
-  // Gliding smooth scroll saat mendarat dari halaman lain dengan hash di URL
+  // Gliding smooth scroll jika mendarat dengan hash di URL
   window.addEventListener('load', function () {
     if (window.location.hash) {
       var hash = window.location.hash;
@@ -568,9 +612,9 @@
         setTimeout(function () {
           var header = document.querySelector('header');
           var offset = header ? header.offsetHeight : 76;
-          var targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
-        }, 120);
+          var targetY = Math.max(0, target.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - offset);
+          smoothScrollToY(targetY);
+        }, 150);
       }
     }
   });

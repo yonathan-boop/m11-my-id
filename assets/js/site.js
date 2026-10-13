@@ -25,6 +25,56 @@ function toggleMenu(force) {
   button.textContent = open ? '✕' : '☰';
 }
 syncTheme();
+
+// Cinematic Smooth Scroll Engine (Mencegah Teleportasi & Menghasilkan Efek Meluncur Mulus)
+let scrollAnimId = null;
+function smoothScrollToY(targetY, duration) {
+  if (scrollAnimId) cancelAnimationFrame(scrollAnimId);
+
+  const startY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  const distance = targetY - startY;
+  if (Math.abs(distance) < 4) return;
+
+  duration = duration || Math.min(850, Math.max(480, Math.round(Math.abs(distance) * 0.28)));
+  let startTime = null;
+
+  const prevScrollBehavior = document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = 'auto';
+  document.body.style.scrollBehavior = 'auto';
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = easeInOutCubic(progress);
+    const currentY = startY + (distance * ease);
+
+    window.scrollTo(0, Math.round(currentY));
+
+    if (progress < 1) {
+      scrollAnimId = requestAnimationFrame(step);
+    } else {
+      window.scrollTo(0, Math.round(targetY));
+      document.documentElement.style.scrollBehavior = prevScrollBehavior;
+      document.body.style.scrollBehavior = prevScrollBehavior;
+      scrollAnimId = null;
+    }
+  }
+
+  scrollAnimId = requestAnimationFrame(step);
+}
+
+window.addEventListener('wheel', () => {
+  if (scrollAnimId) { cancelAnimationFrame(scrollAnimId); scrollAnimId = null; }
+}, { passive: true });
+window.addEventListener('touchmove', () => {
+  if (scrollAnimId) { cancelAnimationFrame(scrollAnimId); scrollAnimId = null; }
+}, { passive: true });
+
 document.querySelectorAll('#menu a, a[href*="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const href = a.getAttribute('href');
@@ -37,13 +87,8 @@ document.querySelectorAll('#menu a, a[href*="#"]').forEach(a => {
       toggleMenu(false);
       const header = document.querySelector('header');
       const offset = header ? header.offsetHeight : 76;
-      const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
-      if (history.pushState) {
-        history.pushState(null, null, hash);
-      } else {
-        window.location.hash = hash;
-      }
+      const targetY = Math.max(0, target.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - offset);
+      smoothScrollToY(targetY);
     } else {
       toggleMenu(false);
     }
@@ -61,9 +106,9 @@ window.addEventListener('load', () => {
       setTimeout(() => {
         const header = document.querySelector('header');
         const offset = header ? header.offsetHeight : 76;
-        const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
-      }, 120);
+        const targetY = Math.max(0, target.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop) - offset);
+        smoothScrollToY(targetY);
+      }, 150);
     }
   }
 });
