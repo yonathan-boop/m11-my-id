@@ -84,11 +84,12 @@
         <a href="#pengumuman">Berita</a>
       </div>
       <div class="menu-row">
-        <a href="#kegiatan">Kegiatan</a>
+        <a href="#kegiatan">Kehidupan Sekolah</a>
         <a href="#galeri">Galeri</a>
         <a href="#lokasi">Lokasi</a>
         <a href="#kontak">Kontak</a>
-        <a href="pages/kalender.html">📅 Kalender Pendidikan</a>
+        <a href="pages/kalender.html">📅 Kalender</a>
+        <a href="pages/pendaftaran.html" class="nav-cta">Pendaftaran ↗</a>
       </div>
     </nav>
     <div class="nav-actions">
@@ -372,6 +373,50 @@
   </div>
 </section>
 
+<section id="pendaftaran">
+  <div class="container admissions">
+    <div>
+      <span class="eyebrow">PENDAFTARAN DI SEKOLAH</span>
+      <h2>Langkah awal yang sederhana.</h2>
+      <p class="lead" style="color:var(--teks-muted);font-size:1.05rem;line-height:1.6;margin:14px 0 24px;">Pendaftaran dilakukan langsung di sekolah. Tim kami dapat membantu menjelaskan pilihan jenjang, persyaratan, dan biaya sebelum Anda berkunjung.</p>
+      <ol class="steps">
+        <li>
+          <strong>Pilih jenjang pendidikan</strong>
+          <p>Sampaikan apakah Anda mencari informasi untuk TK, SD, atau SMP.</p>
+        </li>
+        <li>
+          <strong>Tanyakan informasi yang dibutuhkan</strong>
+          <p>Konfirmasikan ketersediaan tempat, biaya terbaru, serta dokumen yang perlu dibawa kepada tim sekolah.</p>
+        </li>
+        <li>
+          <strong>Kunjungi Methodist-11</strong>
+          <p>Datang ke sekolah untuk berkonsultasi dan melanjutkan proses pendaftaran.</p>
+        </li>
+      </ol>
+      <div style="margin-top: 24px;">
+        <a class="btn" href="pages/pendaftaran.html">Buka Panduan Pendaftaran &amp; FAQ ↗</a>
+      </div>
+    </div>
+    <aside class="admission-card">
+      <span class="eyebrow">KONSULTASI PENDAFTARAN</span>
+      <h2>Kami siap membantu.</h2>
+      <p>Pilih jenjang untuk menyiapkan pertanyaan melalui WhatsApp.</p>
+      <label for="jenjang-beranda">Jenjang pendidikan</label>
+      <select id="jenjang-beranda">
+        <option value="TK">TK — Taman Kanak-kanak</option>
+        <option value="SD" selected>SD — Sekolah Dasar</option>
+        <option value="SMP">SMP — Sekolah Menengah Pertama</option>
+      </select>
+      <a id="admission-chat-beranda" class="btn" href="https://wa.me/6285261053664?text=Halo%20Miss%2C%20saya%20ingin%20informasi%20pendaftaran%20SD%20Methodist-11.%20Mohon%20info%20biaya%20dan%20persyaratan.%20Terima%20kasih." target="_blank" rel="noopener">Tanya via WhatsApp ↗</a>
+      <div class="visit-info">
+        <strong>Senin–Sabtu · 07.00–15.00 WIB</strong>
+        <p>Jl. Berlian Sari III No.151 A, Kedai Durian, Medan Johor.</p>
+        <a href="#lokasi" style="color:var(--biru);font-weight:700;text-decoration:none;">Lihat lokasi sekolah →</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
 <section class="contact" id="kontak">
   <div class="container">
     <h2>Contact Us</h2>
@@ -405,7 +450,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0017</div>
+  <div class="footer-meta">Versi 0.0018</div>
 </footer>
 
 <!-- Running Text Pengumuman PPDB di Bagian Bawah -->
@@ -733,6 +778,19 @@
         });
       }
     });
+  })();
+
+  /* Dynamic Admission Chat Link by Selected Level */
+  (function () {
+    var jb = document.getElementById('jenjang-beranda');
+    if (jb) {
+      jb.addEventListener('change', function () {
+        var chat = document.getElementById('admission-chat-beranda');
+        if (chat) {
+          chat.href = 'https://wa.me/6285261053664?text=' + encodeURIComponent('Halo Miss, saya ingin informasi pendaftaran ' + jb.value + ' Methodist-11. Mohon info biaya dan persyaratan. Terima kasih.');
+        }
+      });
+    }
   })();
 </script>
 
