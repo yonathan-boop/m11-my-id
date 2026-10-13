@@ -26,7 +26,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="../assets/css/style.css?v=32">
+<link rel="stylesheet" href="../assets/css/style.css?v=33">
 </head>
 <body>
 
@@ -64,83 +64,146 @@
 
 <section class="page-hero">
   <div class="container">
-    <h1>Kegiatan Sekolah</h1>
-    <div class="tgl">Semua kegiatan yang telah dilaksanakan</div>
+    <h1>Kegiatan & Kehidupan Sekolah</h1>
+    <div class="tgl">Kumpulan acara perayaan, program edukatif, aktivitas pembinaan karakter, dan prestasi murid</div>
   </div>
 </section>
 <section>
   <div class="container">
-    <a class="back" href="../index.html#kegiatan">← Kembali ke Kegiatan</a>
-    <div class="list-row">
-      <a class="list-item" href="kegiatan/kunjungan-kebun-binatang.html">
+    <a class="back" href="../index.html#kegiatan">← Kembali ke Halaman Utama</a>
+    
+    <!-- Kategori Filter Tabs -->
+    <div class="cat-filter-wrap" role="tablist" aria-label="Filter Kategori Kegiatan">
+      <button class="cat-pill active" onclick="filterCategory('all', this)" role="tab" aria-selected="true">
+        🌟 Semua <span class="count">11</span>
+      </button>
+      <button class="cat-pill" onclick="filterCategory('acara', this)" role="tab" aria-selected="false">
+        🎉 Acara Sekolah <span class="count">4</span>
+      </button>
+      <button class="cat-pill" onclick="filterCategory('program', this)" role="tab" aria-selected="false">
+        🎒 Program Sekolah <span class="count">5</span>
+      </button>
+      <button class="cat-pill" onclick="filterCategory('rutin', this)" role="tab" aria-selected="false">
+        📖 Aktivitas Rutin <span class="count">1</span>
+      </button>
+      <button class="cat-pill" onclick="filterCategory('prestasi', this)" role="tab" aria-selected="false">
+        🏆 Prestasi Sekolah <span class="count">1</span>
+      </button>
+    </div>
+
+    <div class="list-row" id="kegiatan-list">
+      <a class="list-item" data-cat="program" href="kegiatan/kunjungan-kebun-binatang.html">
         <img src="../assets/images/kegiatan/kebun-binatang/kebun-binatang-1.jpg" alt="Kunjungan Edukatif ke Kebun Binatang" loading="lazy">
         <div>
           <div class="tgl">19 September 2026</div>
+          <span class="cat-badge program">Program Sekolah</span>
           <h3>Kunjungan Edukatif ke Kebun Binatang</h3>
           <p>Field trip pengenalan satwa dan cinta lingkungan bersama siswa dan guru.</p>
         </div>
         <span class="arrow">→</span>
       </a>
-      <a class="list-item" href="kegiatan/imlek.html">
+      <a class="list-item" data-cat="acara" href="kegiatan/imlek.html">
         <img src="../assets/images/galeri/imlek/imlek-001.jpg" alt="Perayaan Imlek" loading="lazy">
         <div>
           <div class="tgl">3 Maret 2026</div>
+          <span class="cat-badge acara">Acara Sekolah</span>
           <h3>Perayaan Imlek</h3>
           <p>Perayaan Tahun Baru Imlek yang meriah bersama seluruh siswa.</p>
         </div>
         <span class="arrow">→</span>
       </a>
-      <a class="list-item" href="kegiatan/17-agustus.html">
+      <a class="list-item" data-cat="acara" href="kegiatan/17-agustus.html">
         <img src="../assets/images/galeri/17-agustus/WhatsApp-1.jpg" alt="Peringatan 17 Agustus" loading="lazy">
         <div>
           <div class="tgl">17 Agustus 2025</div>
+          <span class="cat-badge acara">Acara Sekolah</span>
           <h3>Peringatan HUT ke-80 Kemerdekaan RI</h3>
           <p>Upacara bendera dan lomba 17-an yang meriah.</p>
         </div>
         <span class="arrow">→</span>
       </a>
-      <a class="list-item" href="kegiatan/ibadah-rutin.html">
+      <a class="list-item" data-cat="rutin" href="kegiatan/ibadah-rutin.html">
         <img src="../assets/images/kegiatan/ibadah-1.jpg" alt="Ibadah rutin" loading="lazy">
         <div>
           <div class="tgl">Setiap Jumat</div>
+          <span class="cat-badge rutin">Aktivitas Rutin</span>
           <h3>Ibadah Rutin Mingguan</h3>
-          <p>Pembinaan iman dan akhlak mulia siswa.</p>
+          <p>Pembinaan iman, budi pekerti, dan akhlak mulia siswa.</p>
         </div>
         <span class="arrow">→</span>
       </a>
-      <a class="list-item" href="kegiatan/harkdiknas.html">
+      <a class="list-item" data-cat="acara" href="kegiatan/harkdiknas.html">
         <img src="../assets/images/kegiatan/harkdiknas-1.jpg" alt="Harkdiknas" loading="lazy">
         <div>
           <div class="tgl">2 Mei 2024</div>
+          <span class="cat-badge acara">Acara Sekolah</span>
           <h3>Kegiatan Harkdiknas 2024</h3>
-          <p>Peringatan Hari Pendidikan Nasional 2024.</p>
+          <p>Peringatan Hari Pendidikan Nasional 2024 bersama seluruh warga sekolah.</p>
         </div>
         <span class="arrow">→</span>
       </a>
-      <a class="list-item" href="kegiatan/kunjungan-milo.html">
+      <a class="list-item" data-cat="program" href="kegiatan/kunjungan-milo.html">
         <img src="../assets/images/kegiatan/milo-1.jpg" alt="Kunjungan Susu Milo" loading="lazy">
         <div>
           <div class="tgl">3 September 2024</div>
+          <span class="cat-badge program">Program Sekolah</span>
           <h3>Kunjungan Susu Milo</h3>
-          <p>Kunjungan edukatif susu sehat untuk siswa.</p>
+          <p>Kunjungan edukatif pola hidup sehat dan gizi bergizi untuk siswa.</p>
         </div>
         <span class="arrow">→</span>
       </a>
-      <div class="list-item nota">
+      <div class="list-item nota" data-cat="acara">
         <img src="../assets/images/galeri/outdoor/galeri-12.jpg" alt="Wisuda" onclick="openLightbox(this.src)" loading="lazy">
         <div>
           <div class="tgl">Juni 2025</div>
+          <span class="cat-badge acara">Acara Sekolah</span>
           <h3>Wisuda / Pelepasan Siswa Kelas VI</h3>
-          <p>Pelepasan siswa kelas VI tahun ajaran 2024/2025.</p>
+          <p>Pelepasan siswa kelas VI tahun ajaran 2024/2025 dengan penuh sukacita.</p>
         </div>
       </div>
-      <div class="list-item nota">
+      <div class="list-item nota" data-cat="program">
         <img src="../assets/images/galeri/outdoor/galeri-13.jpeg" alt="Bakti sosial" onclick="openLightbox(this.src)" loading="lazy">
         <div>
           <div class="tgl">April 2025</div>
+          <span class="cat-badge program">Program Sekolah</span>
           <h3>Kegiatan Bakti Sosial</h3>
-          <p>Berbagi kasih dengan masyarakat sekitar sekolah.</p>
+          <p>Berbagi kasih dan kepedulian bersama masyarakat sekitar sekolah.</p>
         </div>
+      </div>
+      <a class="list-item" data-cat="program" href="pengumuman/study-tour.html">
+        <img src="../assets/images/pengumuman/study-tour.jpg" alt="Study Tour" loading="lazy">
+        <div>
+          <div class="tgl">19 September 2026</div>
+          <span class="cat-badge program">Program Sekolah</span>
+          <h3>Study Tour ke Rahmat Zoo &amp; Park</h3>
+          <p>Field trip edukatif pengenalan satwa dan konservasi alam untuk seluruh murid kelas I-VI.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="list-item" data-cat="program" href="pengumuman/retreat.html">
+        <img src="../assets/images/pengumuman/retreat.jpg" alt="Retreat Siswa" loading="lazy">
+        <div>
+          <div class="tgl">6–8 Januari 2027</div>
+          <span class="cat-badge program">Program Sekolah</span>
+          <h3>Retreat &amp; Pembinaan Karakter Siswa</h3>
+          <p>Program retret pembinaan spiritual dan pengembangan karakter siswa di Manna Hill, Berastagi.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="list-item" data-cat="prestasi" href="pengumuman/juara-kelas.html">
+        <img src="../assets/images/kegiatan.jpg" alt="Prestasi Siswa" loading="lazy">
+        <div>
+          <div class="tgl">Semester Ganjil 2026/2027</div>
+          <span class="cat-badge prestasi">Prestasi Sekolah</span>
+          <h3>Juara Kelas &amp; Apresiasi Prestasi Siswa</h3>
+          <p>Penghargaan prestasi akademik dan karakter teladan siswa-siswi berprestasi Methodist-11.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      
+      <div id="filter-empty-state">
+        <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">Belum ada kegiatan pada kategori ini</p>
+        <p style="font-size: 0.9rem;">Dokumentasi kegiatan akan segera diperbarui oleh pihak sekolah.</p>
       </div>
     </div>
   </div>
@@ -148,7 +211,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0016</div>
+  <div class="footer-meta">Versi 0.0017</div>
 </footer>
 
   <div class="lightbox" id="lightbox" onclick="lightboxBg(event)">
@@ -215,6 +278,38 @@
     if (e.key === 'ArrowLeft') lbNav(-1);
     if (e.key === 'ArrowRight') lbNav(1);
   });
+
+  function filterCategory(cat, btn) {
+    document.querySelectorAll('.cat-pill').forEach(function(p) {
+      p.classList.remove('active');
+      p.setAttribute('aria-selected', 'false');
+    });
+    if (btn) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+    }
+    var items = document.querySelectorAll('.list-item[data-cat]');
+    var count = 0;
+    items.forEach(function(it) {
+      if (cat === 'all' || it.getAttribute('data-cat') === cat) {
+        it.style.display = 'flex';
+        count++;
+      } else {
+        it.style.display = 'none';
+      }
+    });
+    var emptyEl = document.getElementById('filter-empty-state');
+    if (emptyEl) emptyEl.style.display = (count === 0) ? 'block' : 'none';
+  }
+
+  // Handle URL hash filtering (e.g. #acara, #program, #rutin, #prestasi)
+  (function initFilterFromHash() {
+    var hash = (window.location.hash || '').replace('#', '').toLowerCase();
+    if (['acara', 'program', 'rutin', 'prestasi'].indexOf(hash) !== -1) {
+      var targetBtn = document.querySelector('.cat-pill[onclick*="' + hash + '"]');
+      if (targetBtn) filterCategory(hash, targetBtn);
+    }
+  })();
 </script>
 </body>
 </html>
