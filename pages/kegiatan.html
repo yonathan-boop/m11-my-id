@@ -26,7 +26,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="../assets/css/style.css?v=42">
+<link rel="stylesheet" href="../assets/css/style.css?v=43">
 </head>
 <body>
 
@@ -76,7 +76,7 @@
     <!-- Kategori Filter Tabs -->
     <div class="cat-filter-wrap" role="tablist" aria-label="Filter Kategori Kegiatan">
       <button class="cat-pill active" onclick="filterCategory('all', this)" role="tab" aria-selected="true">
-        🌟 Semua <span class="count">11</span>
+        🌟 Semua <span class="count">12</span>
       </button>
       <button class="cat-pill" onclick="filterCategory('acara', this)" role="tab" aria-selected="false">
         🎉 Acara Sekolah <span class="count">4</span>
@@ -88,11 +88,21 @@
         📖 Aktivitas Rutin <span class="count">1</span>
       </button>
       <button class="cat-pill" onclick="filterCategory('prestasi', this)" role="tab" aria-selected="false">
-        🏆 Prestasi Sekolah <span class="count">1</span>
+        🏆 Prestasi Sekolah <span class="count">2</span>
       </button>
     </div>
 
     <div class="list-row" id="kegiatan-list">
+      <a class="list-item" data-cat="prestasi" href="kegiatan/methodistnesia-2026.html">
+        <img src="../assets/images/kegiatan/methodistnesia-2026/vokal-solo.jpg" alt="Finalis Methodistnesia 2026" loading="lazy">
+        <div>
+          <div class="tgl">15 Oktober 2026</div>
+          <span class="cat-badge prestasi">Prestasi Sekolah</span>
+          <h3>Siswa-Siswi Methodist-11 Lolos Finalis Methodistnesia 2026</h3>
+          <p>Selamat kepada Bebe Helena Hu, Jovita Nadine Sashi Kirana Sinaga, dan Evelyn Arghanietta Pakpahan yang melaju ke babak final.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
       <a class="list-item" data-cat="program" href="kegiatan/kunjungan-kebun-binatang.html">
         <img src="../assets/images/kegiatan/kebun-binatang/kebun-binatang-1.jpg" alt="Kunjungan Edukatif ke Kebun Binatang" loading="lazy">
         <div>
@@ -212,7 +222,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0026</div>
+  <div class="footer-meta">Versi 0.0027</div>
 </footer>
 
   <div class="lightbox" id="lightbox" onclick="lightboxBg(event)">
