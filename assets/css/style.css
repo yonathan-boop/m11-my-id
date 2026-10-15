@@ -605,7 +605,8 @@ section h2::after {
   margin-bottom: 8px;
 }
 
-.box ul {
+.box ul,
+.box ol {
   padding-left: 22px;
   font-size: 0.94rem;
   color: var(--teks);
@@ -1817,6 +1818,7 @@ body.has-ticker .floating-toast {
 
 [data-theme="dark"] .box p,
 [data-theme="dark"] .box ul,
+[data-theme="dark"] .box ol,
 [data-theme="dark"] .box li {
   color: #e2e8f0 !important;
 }
