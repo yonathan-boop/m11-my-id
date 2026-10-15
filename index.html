@@ -62,7 +62,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="assets/css/style.css?v=40">
+<link rel="stylesheet" href="assets/css/style.css?v=41">
 </head>
 <body class="has-ticker">
 
@@ -458,7 +458,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0024</div>
+  <div class="footer-meta">Versi 0.0025</div>
 </footer>
 
 <!-- Running Text Pengumuman PPDB di Bagian Bawah -->
@@ -489,6 +489,17 @@
     </div>
   </a>
   <button type="button" class="ticker-close" onclick="document.querySelector('.bottom-ticker').style.display='none';document.body.classList.remove('has-ticker')" aria-label="Tutup running text" title="Tutup">✕</button>
+</div>
+
+<div class="popup-overlay" id="popup-pengumuman" onclick="closePopup()">
+  <div class="popup" onclick="gotoPengumuman()">
+    <button class="popup-close" onclick="event.stopPropagation(); closePopup()" aria-label="Tutup">✕</button>
+    <span class="popup-badge">📢 BERITA TERBARU</span>
+    <h3>Imbauan Penggunaan Masker &amp; Penyesuaian Aktivitas Luar Ruangan</h3>
+    <p class="popup-tgl">15 Oktober 2026</p>
+    <p>Menindaklanjuti Surat Edaran Disdikbud Kota Medan terkait penurunan kualitas udara akibat kabut asap: imbauan wajib masker di sekolah, pembatasan aktivitas luar ruangan, dan bekal air minum yang cukup.</p>
+    <a class="btn" href="pages/pengumuman/imbauan-masker.html" onclick="event.stopPropagation();">Lihat Selengkapnya ↗</a>
+  </div>
 </div>
 
 <div class="floating-toast" id="toast-pengumuman" role="status" aria-live="polite">
@@ -626,6 +637,32 @@
     }
   });
 
+  /* Pop-up Pengumuman Resmi (Tengah Layar) */
+  (function initModalPopup() {
+    var el = document.getElementById('popup-pengumuman');
+    if (!el) return;
+    try {
+      if (sessionStorage.getItem('m11-popup-closed') === '1') return;
+    } catch (e) {}
+    setTimeout(function () {
+      el.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }, 400);
+  })();
+
+  function closePopup() {
+    var el = document.getElementById('popup-pengumuman');
+    if (el) el.classList.remove('show');
+    document.body.style.overflow = '';
+    try { sessionStorage.setItem('m11-popup-closed', '1'); } catch (e) {}
+  }
+
+  function gotoPengumuman() {
+    closePopup();
+    var s = document.getElementById('pengumuman');
+    if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   /* Floating Toast Notifikasi Pojok Kanan Bawah (Swipe to Dismiss) */
   (function initFloatingToast() {
     var toast = document.getElementById('toast-pengumuman');
@@ -733,6 +770,8 @@
 
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
+    var el = document.getElementById('popup-pengumuman');
+    if (el && el.classList.contains('show')) closePopup();
     var toast = document.getElementById('toast-pengumuman');
     if (toast && toast.classList.contains('show')) dismissToast();
     var m = document.getElementById('modal-fasilitas');
