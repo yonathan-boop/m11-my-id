@@ -62,7 +62,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="assets/css/style.css?v=45">
+<link rel="stylesheet" href="assets/css/style.css?v=46">
 </head>
 <body class="has-ticker">
 
@@ -484,7 +484,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0029</div>
+  <div class="footer-meta">Versi 0.0030</div>
 </footer>
 
 <!-- Running Text Pengumuman PPDB di Bagian Bawah -->
@@ -520,11 +520,11 @@
 <div class="popup-overlay" id="popup-pengumuman" onclick="closePopup()">
   <div class="popup" onclick="gotoPengumuman()">
     <button class="popup-close" onclick="event.stopPropagation(); closePopup()" aria-label="Tutup">✕</button>
-    <span class="popup-badge">📢 BERITA TERBARU</span>
-    <h3>Imbauan Penggunaan Masker &amp; Penyesuaian Aktivitas Luar Ruangan</h3>
-    <p class="popup-tgl">15 Oktober 2026</p>
-    <p>Menindaklanjuti Surat Edaran Disdikbud Kota Medan terkait penurunan kualitas udara akibat kabut asap: imbauan wajib masker di sekolah, pembatasan aktivitas luar ruangan, dan bekal air minum yang cukup.</p>
-    <a class="btn" href="pages/pengumuman/imbauan-masker.html" onclick="event.stopPropagation();">Lihat Selengkapnya ↗</a>
+    <span class="popup-badge">⚠️ PENGUMUMAN PENTING</span>
+    <h3>Pelaksanaan Pembelajaran Jarak Jauh (PJJ)</h3>
+    <p class="popup-tgl">15 Oktober 2026 · Dampak Kabut Asap Karhutla</p>
+    <p>Sesuai SE Mendikdasmen No. 20/2026 &amp; Surat Disdik No. 0000/9789, sekolah jenjang PAUD, SD, dan SMP melaksanakan <b>Pembelajaran Jarak Jauh (PJJ) daring</b> mulai <b>Jumat, 16 Oktober s.d. Rabu, 21 Oktober 2026</b>.</p>
+    <a class="btn" href="pages/pengumuman/pjj-kabut-asap.html" onclick="event.stopPropagation();">Baca Surat Resmi Selengkapnya ↗</a>
   </div>
 </div>
 
@@ -668,7 +668,7 @@
     var el = document.getElementById('popup-pengumuman');
     if (!el) return;
     try {
-      if (sessionStorage.getItem('m11-popup-closed') === '1') return;
+      if (sessionStorage.getItem('m11-popup-closed-pjj') === '1') return;
     } catch (e) {}
     setTimeout(function () {
       el.classList.add('show');
@@ -680,7 +680,7 @@
     var el = document.getElementById('popup-pengumuman');
     if (el) el.classList.remove('show');
     document.body.style.overflow = '';
-    try { sessionStorage.setItem('m11-popup-closed', '1'); } catch (e) {}
+    try { sessionStorage.setItem('m11-popup-closed-pjj', '1'); } catch (e) {}
   }
 
   function gotoPengumuman() {
