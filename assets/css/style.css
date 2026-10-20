@@ -2466,3 +2466,482 @@ body.has-ticker {
 
 
 
+
+
+/* ================================================================
+   KOMPONEN UNIT TABS (PG/TK, SD, SMP)
+   ================================================================ */
+.unit-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.unit-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--teks-muted);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.unit-tab-btn:hover {
+  color: var(--biru);
+  border-color: var(--biru-muda);
+  transform: translateY(-2px);
+}
+
+.unit-tab-btn.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--biru) 0%, var(--hero-b) 100%);
+  border-color: var(--biru);
+  box-shadow: 0 6px 18px rgba(30, 64, 175, 0.3);
+}
+
+.unit-tab-panels {
+  position: relative;
+}
+
+.unit-panel {
+  display: none;
+  animation: tabFadeIn 0.3s ease-out;
+}
+
+.unit-panel.active {
+  display: block;
+}
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.unit-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+}
+
+.unit-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--biru);
+  border: 1px solid var(--chip-border);
+  margin-bottom: 12px;
+}
+
+.unit-info h3 {
+  font-size: 1.35rem;
+  color: var(--teks-judul);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.unit-info p {
+  color: var(--teks-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.unit-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.unit-points li {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--teks);
+  padding-left: 4px;
+}
+
+.unit-cta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.unit-card-highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+
+.highlight-item .hi-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.highlight-item strong {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--teks-judul);
+  margin-bottom: 4px;
+}
+
+.highlight-item p {
+  font-size: 0.82rem;
+  color: var(--teks-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ================================================================
+   STAT STRIP (SOCIAL PROOF COUNTER)
+   ================================================================ */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+  padding: 24px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.stat-item {
+  padding: 8px;
+}
+
+.stat-num {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--biru);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 0.84rem;
+  color: var(--teks-muted);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* ================================================================
+   TESTIMONIALS (KATA ORANG TUA MURID)
+   ================================================================ */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.testi-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--biru-muda);
+}
+
+.testi-stars {
+  color: #f59e0b;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.testi-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--teks);
+  font-style: italic;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.testi-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.testi-author strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--teks-judul);
+}
+
+.testi-author span {
+  font-size: 0.78rem;
+  color: var(--teks-muted);
+}
+
+/* ================================================================
+   PPDB ACCORDION FAQ
+   ================================================================ */
+.ppdb-acc-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.ppdb-acc-item summary {
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--teks-judul);
+  font-weight: 600;
+  list-style: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.ppdb-acc-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.ppdb-acc-item summary::after {
+  content: "▾";
+  font-size: 14px;
+  color: var(--teks-muted);
+  transition: transform 0.2s ease;
+}
+
+.ppdb-acc-item[open] summary::after {
+  transform: rotate(180deg);
+  color: var(--biru);
+}
+
+.ppdb-acc-item .acc-body {
+  padding: 0 18px 16px 18px;
+  color: var(--teks-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.ppdb-acc-item .acc-body ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.ppdb-acc-item .acc-body li {
+  margin-bottom: 6px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .unit-grid {
+    grid-template-columns: 1fr;
+  }
+  .stat-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .testi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-strip {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .unit-tabs-nav {
+    flex-direction: column;
+  }
+  .unit-tab-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Dark mode overrides for new components */
+[data-theme="dark"] .unit-tab-btn {
+  background: #0f172a;
+  border-color: #1e365d;
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .unit-tab-btn:hover {
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .unit-tab-btn.active {
+  background: linear-gradient(135deg, #1d4ed8 0%, #0f172a 100%);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .unit-grid {
+  background: #0f172a;
+  border-color: #1e365d;
+}
+
+[data-theme="dark"] .highlight-item {
+  background: #16243d;
+  border-color: #1e365d;
+}
+
+[data-theme="dark"] .stat-strip {
+  background: #0f172a;
+  border-color: #1e365d;
+}
+
+[data-theme="dark"] .stat-num {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .testi-card {
+  background: #0f172a;
+  border-color: #1e365d;
+}
+
+[data-theme="dark"] .testi-card:hover {
+  border-color: #38bdf8;
+}
+
+[data-theme="dark"] .testi-avatar {
+  background: #16243d;
+  border-color: #1e365d;
+}
+
+[data-theme="dark"] .ppdb-acc-item {
+  background: #0f172a;
+  border-color: #1e365d;
+}
+
+
+/* ================================================================
+   PPDB OPEN CARDS (TERBUKA LANGSUNG)
+   ================================================================ */
+.ppdb-card-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ppdb-open-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ppdb-card-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--biru);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ppdb-list {
+  padding-left: 20px;
+  margin: 0;
+  line-height: 1.7;
+  color: var(--teks);
+  font-size: 0.9rem;
+}
+
+.ppdb-list li {
+  margin-bottom: 4px;
+}
+
+.ppdb-schedule p {
+  font-size: 0.9rem;
+  color: var(--teks);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.ppdb-schedule .ppdb-loc {
+  margin-top: 8px;
+  font-size: 0.84rem;
+  color: var(--teks-muted);
+}
+
+[data-theme="dark"] .ppdb-open-card {
+  background: #0f172a;
+  border-color: #1e365d;
+}
+
+[data-theme="dark"] .ppdb-card-title {
+  color: #38bdf8;
+  border-bottom-color: #1e365d;
+}
