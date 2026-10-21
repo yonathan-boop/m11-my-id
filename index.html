@@ -62,7 +62,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="assets/css/style.css?v=48">
+<link rel="stylesheet" href="assets/css/style.css?v=50">
 </head>
 <body class="has-ticker">
 
@@ -102,7 +102,7 @@
 
 <section class="hero" id="beranda">
   <div class="container">
-    <a class="pengumuman" href="pages/pengumuman/pjj-kabut-asap.html" style="color: #fff; text-decoration: none; cursor: pointer;">⚠️ <b>PENGUMUMAN PENTING:</b> Pembelajaran Jarak Jauh (PJJ) 16–21 Okt 2026 ↗</a>
+    <a class="pengumuman" href="pages/pengumuman/ptm-kembali-normal.html" style="color: #fff; text-decoration: none; cursor: pointer;">🏫 <b>PENGUMUMAN RESMI:</b> Pembelajaran Tatap Muka (PTM) 100% Kembali Normal Mulai 21 Okt 2026 ↗</a>
     <h3 class="hero-yayasan">Yayasan Pendidikan Kristen Methodist Titus</h3>
     <h1 class="hero-sekolah">TK-SD-SMP Swasta Methodist-11</h1>
     <div class="tagline">Menciptakan Generasi Penerus Berdisiplin Tinggi, Bertanggung Jawab, Pintar, Berbakti pada Orang Tua, Bangsa dan Negara serta Berakhlak Mulia.</div>
@@ -394,13 +394,30 @@
     <h2>Berita</h2>
     <p class="sub">Informasi terbaru dari sekolah</p>
     <div class="scroll-row" id="pengumuman-scroll">
+      <a class="kartu" data-event-start="2027-01-06" data-event-end="2027-01-08" href="pages/pengumuman/retreat.html">
+        <img src="assets/images/pengumuman/retreat.jpg?v=1" alt="Retreat Siswa-Siswi SD/SMP" loading="lazy">
+        <div class="kartu-badan">
+          <div class="tgl">7 September 2026</div>
+          <h3>Retreat Siswa-Siswi SD/SMP</h3>
+          <p>Kegiatan Retreat (Pendidikan Karakter) di Manna Hill, Berastagi, 6–8 Januari 2027. Biaya Rp550.000 (disubsidi sekolah). Pendaftar pertama Rp450.000.</p>
+        </div>
+      </a>
+      <a class="kartu" href="pages/pengumuman/ptm-kembali-normal.html">
+        <img src="assets/images/pengumuman/ptm-kembali-normal.jpg" alt="Pelaksanaan Kembali Pembelajaran Tatap Muka (PTM)" loading="lazy">
+        <div class="kartu-badan">
+          <span class="event-status">Pengumuman</span>
+          <div class="tgl">20 Oktober 2026</div>
+          <h3>Pelaksanaan Kembali Tatap Muka (PTM)</h3>
+          <p>Berdasarkan Surat Disdik No. 000/9972, PJJ resmi dihentikan dan PTM 100% diberlakukan kembali mulai Rabu, 21 Oktober 2026.</p>
+        </div>
+      </a>
       <a class="kartu" href="pages/pengumuman/pjj-kabut-asap.html">
         <img src="assets/images/pengumuman/pjj-kabut-asap.jpg" alt="Pelaksanaan Pembelajaran Jarak Jauh (PJJ) Dampak Kabut Asap Karhutla" loading="lazy">
         <div class="kartu-badan">
-          <span class="event-status">Pengumuman</span>
+          <span class="event-status" style="background: #64748b; color: #fff; border-color: #475569;">Selesai</span>
           <div class="tgl">15 Oktober 2026</div>
           <h3>Pelaksanaan Pembelajaran Jarak Jauh (PJJ)</h3>
-          <p>Sesuai SE Mendikdasmen No. 20/2026 &amp; Surat Disdik No. 0000/9789, pembelajaran tatap muka dialihkan ke PJJ daring terhitung 16–21 Oktober 2026.</p>
+          <p>Masa PJJ daring (16–21 Oktober 2026) telah berakhir dan kegiatan pembelajaran tatap muka telah berjalan kembali secara normal.</p>
         </div>
       </a>
       <a class="kartu" href="pages/pengumuman/imbauan-masker.html">
@@ -410,14 +427,6 @@
           <div class="tgl">15 Oktober 2026</div>
           <h3>Imbauan Penggunaan Masker &amp; Penyesuaian Aktivitas</h3>
           <p>Langkah pencegahan kabut asap: imbauan wajib masker di lingkungan sekolah, pembatasan aktivitas luar ruangan (PJOK/upacara), dan bekal air minum yang cukup.</p>
-        </div>
-      </a>
-      <a class="kartu" data-event-start="2027-01-06" data-event-end="2027-01-08" href="pages/pengumuman/retreat.html">
-        <img src="assets/images/pengumuman/retreat.jpg?v=1" alt="Retreat Siswa-Siswi SD/SMP" loading="lazy">
-        <div class="kartu-badan">
-          <div class="tgl">7 September 2026</div>
-          <h3>Retreat Siswa-Siswi SD/SMP</h3>
-          <p>Kegiatan Retreat (Pendidikan Karakter) di Manna Hill, Berastagi, 6–8 Januari 2027. Biaya Rp550.000 (disubsidi sekolah). Pendaftar pertama Rp450.000.</p>
         </div>
       </a>
       <a class="kartu" data-event-end="2026-09-19" href="pages/pengumuman/study-tour.html">
@@ -708,7 +717,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0032</div>
+  <div class="footer-meta">Versi 0.0034</div>
 </footer>
 
 <!-- Running Text Pengumuman PPDB di Bagian Bawah -->
@@ -739,17 +748,6 @@
     </div>
   </a>
   <button type="button" class="ticker-close" onclick="document.querySelector('.bottom-ticker').style.display='none';document.body.classList.remove('has-ticker')" aria-label="Tutup running text" title="Tutup">✕</button>
-</div>
-
-<div class="popup-overlay" id="popup-pengumuman" onclick="closePopup()">
-  <div class="popup" onclick="gotoPengumuman()">
-    <button class="popup-close" onclick="event.stopPropagation(); closePopup()" aria-label="Tutup">✕</button>
-    <span class="popup-badge">⚠️ PENGUMUMAN PENTING</span>
-    <h3>Pelaksanaan Pembelajaran Jarak Jauh (PJJ)</h3>
-    <p class="popup-tgl">15 Oktober 2026 · Dampak Kabut Asap Karhutla</p>
-    <p>Sesuai SE Mendikdasmen No. 20/2026 &amp; Surat Disdik No. 0000/9789, sekolah jenjang PAUD, TK, SD, dan SMP sederajat melaksanakan <b>Pembelajaran Jarak Jauh (PJJ) daring</b> mulai <b>Jumat, 16 Oktober s.d. Rabu, 21 Oktober 2026</b>.</p>
-    <a class="btn" href="pages/pengumuman/pjj-kabut-asap.html" onclick="event.stopPropagation();">Baca Surat Resmi Selengkapnya ↗</a>
-  </div>
 </div>
 
 <div class="floating-toast" id="toast-pengumuman" role="status" aria-live="polite">
@@ -887,24 +885,11 @@
     }
   });
 
-  /* Pop-up Pengumuman Resmi (Tengah Layar) */
-  (function initModalPopup() {
-    var el = document.getElementById('popup-pengumuman');
-    if (!el) return;
-    try {
-      if (sessionStorage.getItem('m11-popup-closed-pjj') === '1') return;
-    } catch (e) {}
-    setTimeout(function () {
-      el.classList.add('show');
-      document.body.style.overflow = 'hidden';
-    }, 400);
-  })();
-
+  /* Pop-up Pengumuman Resmi (Tengah Layar) - Dinonaktifkan pasca-PJJ */
   function closePopup() {
     var el = document.getElementById('popup-pengumuman');
     if (el) el.classList.remove('show');
     document.body.style.overflow = '';
-    try { sessionStorage.setItem('m11-popup-closed-pjj', '1'); } catch (e) {}
   }
 
   function gotoPengumuman() {
