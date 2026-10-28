@@ -968,6 +968,26 @@ footer {
   letter-spacing: 0.04em;
 }
 
+.footer-eraport {
+  margin-top: 8px;
+}
+
+.footer-eraport a {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-eraport a:hover {
+  color: var(--kuning-terang, #fbbf24);
+  text-decoration: underline;
+}
+
 /* Kartu & Horizontal Carousel */
 .kartu-grid {
   display: grid;
