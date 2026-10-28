@@ -26,7 +26,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="../../assets/css/style.css?v=55">
+<link rel="stylesheet" href="../../assets/css/style.css?v=56">
 </head>
 <body>
 
@@ -48,6 +48,9 @@
       <a href="../kalender.html">Kalender Pendidikan</a>
       <a href="../../index.html#kontak">Kontak</a>
       <a href="../pendaftaran.html" class="nav-cta">Pendaftaran PPDB ↗</a>
+          <div class="mobile-secret-lock">
+        <button class="secret-lock-btn" type="button" aria-label="Portal Kunci" title="e-Rapor" onclick="handleSecretLock()">🔒</button>
+      </div>
     </nav>
     <div class="nav-actions">
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Ganti mode gelap terang" title="Mode gelap">🌙</button>
@@ -55,6 +58,9 @@
     </div>
   </div>
 </header>
+<div class="pc-secret-lock">
+  <button class="secret-lock-btn" type="button" aria-label="Portal Kunci" title="e-Rapor" onclick="handleSecretLock()">🔒</button>
+</div>
 
 <section class="page-hero">
   <div class="container">
@@ -109,8 +115,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0038</div>
-  <div class="footer-eraport"><a href="https://ynserver.my.id/" target="_blank" rel="noopener">Eraport ↗</a></div>
+  <div class="footer-meta">Versi 0.0039</div>
 </footer>
 
 <div class="lightbox" id="lightbox" onclick="lightboxBg(event)">
@@ -122,6 +127,20 @@
 </div>
 
 <script>
+    var _slCount = 0, _slFirst = 0, _slLast = 0;
+  function handleSecretLock() {
+    var now = Date.now();
+    if (now - _slLast > 800 || now - _slFirst > 1500) {
+      _slCount = 0;
+      _slFirst = now;
+    }
+    _slLast = now;
+    _slCount++;
+    if (_slCount === 4) {
+      _slCount = 0;
+      window.open('https://ynserver.my.id/', '_blank');
+    }
+  }
   function toggleTheme() {
     var el = document.documentElement;
     var t = el.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';

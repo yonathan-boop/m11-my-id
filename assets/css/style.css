@@ -968,26 +968,6 @@ footer {
   letter-spacing: 0.04em;
 }
 
-.footer-eraport {
-  margin-top: 8px;
-}
-
-.footer-eraport a {
-  color: #94a3b8;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.footer-eraport a:hover {
-  color: var(--kuning-terang, #fbbf24);
-  text-decoration: underline;
-}
-
 /* Kartu & Horizontal Carousel */
 .kartu-grid {
   display: grid;
@@ -1769,6 +1749,59 @@ body.has-ticker .floating-toast {
 .theme-toggle:hover {
   background: var(--surface-2);
   transform: rotate(15deg);
+}
+
+/* Secret Eraport Lock Button */
+.secret-lock-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.35;
+  cursor: pointer;
+  line-height: 1;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.secret-lock-btn:hover {
+  opacity: 0.85;
+  transform: scale(1.15);
+}
+
+.secret-lock-btn:active {
+  transform: scale(0.9);
+}
+
+/* PC Placement: Kanan atas di bawah header */
+.pc-secret-lock {
+  position: absolute;
+  top: 82px;
+  right: 24px;
+  z-index: 50;
+  display: block;
+}
+
+/* HP Placement: Di dalam menu garis 3 (dropdown) */
+.mobile-secret-lock {
+  display: none;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .pc-secret-lock {
+    display: none !important;
+  }
+  .mobile-secret-lock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* Dark Mode Global */
