@@ -26,7 +26,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="../../assets/css/style.css?v=51">
+<link rel="stylesheet" href="../../assets/css/style.css?v=53">
 <style>
   .finalis-highlight-card {
     background: var(--bg-surface, #ffffff);
@@ -126,36 +126,30 @@
 <body>
 
   <header>
-    <div class="container nav">
-      <a class="logo cursor-pointer" href="/">
-        <img src="../../assets/images/Picture1.png" alt="Logo Methodist-11">
-        <span class="logo-txt">
-          <span class="logo-full">Yayasan Pendidikan Kristen Methodist Titus</span>
-          <span class="logo-sub">TK-SD-SMP Swasta Methodist-11</span>
-        </span>
-      </a>
-      <nav id="menu">
-        <div class="menu-row">
-          <a href="../../index.html#beranda">Beranda</a>
-          <a href="../../index.html#kenapa">Kenapa Kami</a>
-          <a href="../../index.html#visi">Visi &amp; Misi</a>
-          <a href="../../index.html#fasilitas">Fasilitas</a>
-          <a href="../../index.html#pengumuman">Berita</a>
-        </div>
-        <div class="menu-row">
-          <a href="../../index.html#kegiatan">Kegiatan</a>
-          <a href="../../index.html#galeri">Galeri</a>
-          <a href="../../index.html#lokasi">Lokasi</a>
-          <a href="../../index.html#kontak">Kontak</a>
-          <a href="../kalender.html">📅 Kalender Pendidikan</a>
-        </div>
-      </nav>
-      <div class="nav-actions">
-        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Ganti mode gelap terang" title="Mode gelap">🌙</button>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      </div>
+  <div class="container nav">
+    <a class="logo cursor-pointer" href="../../index.html">
+      <img src="../../assets/images/Picture1.png" alt="Logo Methodist-11">
+      <span class="logo-txt">
+        <span class="logo-full">Methodist-11 Medan</span>
+        <span class="logo-sub">TK · SD · SMP Swasta Kristen</span>
+      </span>
+    </a>
+    <nav id="menu">
+      <a href="../../index.html#beranda">Beranda</a>
+      <a href="../../index.html#kenapa">Keunggulan</a>
+      <a href="../../index.html#jenjang">Jenjang</a>
+      <a href="../../index.html#fasilitas">Fasilitas</a>
+      <a href="../../index.html#pengumuman">Berita</a>
+      <a href="../kalender.html">Kalender Pendidikan</a>
+      <a href="../../index.html#kontak">Kontak</a>
+      <a href="../pendaftaran.html" class="nav-cta">Pendaftaran PPDB ↗</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Ganti mode gelap terang" title="Mode gelap">🌙</button>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu navigasi">☰</button>
     </div>
-  </header>
+  </div>
+</header>
 
   <section class="page-hero">
     <div class="container">
@@ -220,7 +214,7 @@
 
   <footer>
     © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-    <div class="footer-meta">Versi 0.0035</div>
+    <div class="footer-meta">Versi 0.0036</div>
   </footer>
 
   <div class="lightbox" id="lightbox" onclick="lightboxBg(event)">
@@ -297,5 +291,6 @@
       if (e.key === 'ArrowRight') lbNav(1);
     });
   </script>
+<script src="../../assets/js/lightbox-zoom.js" defer></script>
 </body>
 </html>

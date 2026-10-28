@@ -138,6 +138,7 @@ function openLightbox(src) {
 function closeLightbox() {
   const box = document.getElementById('lightbox');
   if (!box || !box.classList.contains('open')) return;
+  if (typeof window.resetLbZoom === 'function') window.resetLbZoom(false);
   box.classList.remove('open');
   document.body.style.overflow = previousOverflow;
   document.querySelectorAll('[data-lb-inert]').forEach(el => { el.inert = false; delete el.dataset.lbInert; });
@@ -145,6 +146,7 @@ function closeLightbox() {
 }
 function lightboxBg(event) { if (event.target.id === 'lightbox') closeLightbox(); }
 function showLb() {
+  if (typeof window.resetLbZoom === 'function') window.resetLbZoom(false);
   const original = lbItems[lbIdx];
   const image = document.getElementById('lb-img');
   image.src = original.src;
