@@ -63,7 +63,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="assets/css/style.css?v=60">
+<link rel="stylesheet" href="assets/css/style.css?v=61">
 </head>
 <body class="has-ticker">
 
@@ -735,7 +735,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0043</div>
+  <div class="footer-meta">Versi 0.0044</div>
 </footer>
 
 <!-- Running Text Pengumuman PPDB di Bagian Bawah -->
@@ -769,12 +769,19 @@
 </div>
 
 <div class="floating-toast" id="toast-pengumuman" role="status" aria-live="polite">
-  <div class="toast-card" id="toast-card">
-    <a class="toast-content" href="pages/pengumuman/retreat.html" id="toast-link" title="Buka Pengumuman Retreat Siswa">
+  <div class="toast-card" id="toast-card-tka">
+    <a class="toast-content" href="pages/pengumuman/kompetisi-kenal-tka.html" title="Buka Pengumuman Kompetisi KENAL TKA BP">
+      <span class="toast-badge" style="background:#2563eb;color:#fff;">Kompetisi</span>
+      <span class="toast-title">KENAL TKA BP · 10 Nov ↗</span>
+    </a>
+    <button type="button" class="toast-close" onclick="closeToast(event)" aria-label="Tutup notifikasi" title="Tutup">✕</button>
+  </div>
+  <div class="toast-card" id="toast-card-retreat">
+    <a class="toast-content" href="pages/pengumuman/retreat.html" title="Buka Pengumuman Retreat Siswa">
       <span class="toast-badge">Retreat</span>
       <span class="toast-title">Retreat Siswa · 6–8 Jan 2027 ↗</span>
     </a>
-    <button type="button" class="toast-close" onclick="closeToast(event)" aria-label="Tutup notifikasi" title="Geser atau klik untuk tutup">✕</button>
+    <button type="button" class="toast-close" onclick="closeToast(event)" aria-label="Tutup notifikasi" title="Tutup">✕</button>
   </div>
 </div>
 
@@ -933,8 +940,7 @@
   /* Floating Toast Notifikasi Pojok Kanan Bawah (Swipe to Dismiss) */
   (function initFloatingToast() {
     var toast = document.getElementById('toast-pengumuman');
-    var card = document.getElementById('toast-card');
-    if (!toast || !card) return;
+    if (!toast) return;
 
     try {
       if (sessionStorage.getItem('m11-toast-dismissed') === '1') return;
@@ -944,86 +950,87 @@
       toast.classList.add('show');
     }, 1000);
 
-    var startX = 0;
-    var startY = 0;
-    var currentX = 0;
-    var isSwiping = false;
-    var isDragging = false;
-    var dragThreshold = 55;
+    var cards = toast.querySelectorAll('.toast-card');
+    cards.forEach(function (card) {
+      var startX = 0, startY = 0, currentX = 0;
+      var isSwiping = false, isDragging = false;
+      var dragThreshold = 55;
 
-    function onTouchStart(e) {
-      if (e.target.closest('.toast-close')) return;
-      var t = e.touches ? e.touches[0] : e;
-      startX = t.clientX;
-      startY = t.clientY;
-      currentX = 0;
-      isSwiping = false;
-      isDragging = true;
-      card.style.transition = 'none';
-    }
+      function onTouchStart(e) {
+        if (e.target.closest('.toast-close')) return;
+        var t = e.touches ? e.touches[0] : e;
+        startX = t.clientX;
+        startY = t.clientY;
+        currentX = 0;
+        isSwiping = false;
+        isDragging = true;
+        card.style.transition = 'none';
+      }
 
-    function onTouchMove(e) {
-      if (!isDragging) return;
-      var t = e.touches ? e.touches[0] : e;
-      var diffX = t.clientX - startX;
-      var diffY = t.clientY - startY;
+      function onTouchMove(e) {
+        if (!isDragging) return;
+        var t = e.touches ? e.touches[0] : e;
+        var diffX = t.clientX - startX;
+        var diffY = t.clientY - startY;
 
-      if (!isSwiping) {
-        if (Math.abs(diffX) > 8 && Math.abs(diffX) > Math.abs(diffY)) {
-          isSwiping = true;
+        if (!isSwiping) {
+          if (Math.abs(diffX) > 8 && Math.abs(diffX) > Math.abs(diffY)) {
+            isSwiping = true;
+          }
+        }
+
+        if (isSwiping && diffX > 0) {
+          if (e.cancelable) e.preventDefault();
+          currentX = diffX;
+          card.style.transform = 'translateX(' + diffX + 'px)';
+          card.style.opacity = Math.max(0, 1 - (diffX / 180));
         }
       }
 
-      if (isSwiping && diffX > 0) {
-        if (e.cancelable) e.preventDefault();
-        currentX = diffX;
-        card.style.transform = 'translateX(' + diffX + 'px)';
-        card.style.opacity = Math.max(0, 1 - (diffX / 180));
-      }
-    }
-
-    function onTouchEnd() {
-      if (!isDragging) return;
-      isDragging = false;
-      if (isSwiping && currentX > dragThreshold) {
-        dismissToast();
-      } else {
-        card.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease';
-        card.style.transform = 'translateX(0)';
-        card.style.opacity = '1';
-      }
-      setTimeout(function () { isSwiping = false; }, 50);
-    }
-
-    card.addEventListener('touchstart', onTouchStart, { passive: true });
-    card.addEventListener('touchmove', onTouchMove, { passive: false });
-    card.addEventListener('touchend', onTouchEnd, { passive: true });
-
-    card.addEventListener('mousedown', onTouchStart);
-    window.addEventListener('mousemove', onTouchMove);
-    window.addEventListener('mouseup', onTouchEnd);
-
-    var link = document.getElementById('toast-link');
-    if (link) {
-      link.addEventListener('click', function (e) {
-        if (currentX > 10) {
-          e.preventDefault();
+      function onTouchEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        if (isSwiping && currentX > dragThreshold) {
+          dismissToast(card);
+        } else {
+          card.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease';
+          card.style.transform = 'translateX(0)';
+          card.style.opacity = '1';
         }
-      });
-    }
+        setTimeout(function () { isSwiping = false; }, 50);
+      }
+
+      card.addEventListener('touchstart', onTouchStart, { passive: true });
+      card.addEventListener('touchmove', onTouchMove, { passive: false });
+      card.addEventListener('touchend', onTouchEnd, { passive: true });
+
+      card.addEventListener('mousedown', onTouchStart);
+      window.addEventListener('mousemove', onTouchMove);
+      window.addEventListener('mouseup', onTouchEnd);
+
+      var link = card.querySelector('.toast-content');
+      if (link) {
+        link.addEventListener('click', function (e) {
+          if (currentX > 10) {
+            e.preventDefault();
+          }
+        });
+      }
+    });
   })();
 
-  function dismissToast() {
-    var card = document.getElementById('toast-card');
-    var toast = document.getElementById('toast-pengumuman');
-    if (card) {
-      card.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease';
-      card.style.transform = 'translateX(120%)';
-      card.style.opacity = '0';
-    }
+  function dismissToast(card) {
+    if (!card) return;
+    card.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease';
+    card.style.transform = 'translateX(120%)';
+    card.style.opacity = '0';
     setTimeout(function () {
-      if (toast) toast.classList.remove('show');
-      try { sessionStorage.setItem('m11-toast-dismissed', '1'); } catch (e) {}
+      card.remove();
+      var toast = document.getElementById('toast-pengumuman');
+      if (toast && !toast.querySelector('.toast-card')) {
+        toast.classList.remove('show');
+        try { sessionStorage.setItem('m11-toast-dismissed', '1'); } catch (e) {}
+      }
     }, 300);
   }
 
@@ -1031,8 +1038,9 @@
     if (e) {
       e.stopPropagation();
       e.preventDefault();
+      var card = e.target.closest('.toast-card');
+      dismissToast(card);
     }
-    dismissToast();
   }
 
   document.addEventListener('keydown', function (e) {
@@ -1040,7 +1048,10 @@
     var el = document.getElementById('popup-pengumuman');
     if (el && el.classList.contains('show')) closePopup();
     var toast = document.getElementById('toast-pengumuman');
-    if (toast && toast.classList.contains('show')) dismissToast();
+    if (toast && toast.classList.contains('show')) {
+      var cards = toast.querySelectorAll('.toast-card');
+      cards.forEach(function (c) { dismissToast(c); });
+    }
     var m = document.getElementById('modal-fasilitas');
     if (m && m.classList.contains('show')) tutupFasilitas();
   });

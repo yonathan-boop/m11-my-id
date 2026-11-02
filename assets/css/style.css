@@ -1526,6 +1526,9 @@ footer {
   bottom: 20px;
   z-index: 998;
   display: none;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
   touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
@@ -1537,7 +1540,7 @@ body.has-ticker .floating-toast {
 }
 
 .floating-toast.show {
-  display: block;
+  display: flex;
   animation: toast-slide-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
