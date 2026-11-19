@@ -191,7 +191,7 @@ const server = http.createServer((req, res) => {
     fs.readFile(file, (e, data) => {
       if (e) { res.writeHead(404); res.end('404 Not Found'); return; }
       const headers = { 'Content-Type': MIME[ext] || 'application/octet-stream' };
-      if (ext === '.html' || ext === '.css' || ext === '.js') {
+      if (ext === '.html' || ext === '.css' || ext === '.js' || ext === '.jpg' || ext === '.jpeg' || ext === '.webp' || ext === '.png') {
         headers['Cache-Control'] = 'no-cache, no-store, must-revalidate';
         headers['Pragma'] = 'no-cache';
         headers['Expires'] = '0';

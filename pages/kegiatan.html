@@ -26,7 +26,7 @@
     } catch (e) { }
   })();
 </script>
-<link rel="stylesheet" href="../assets/css/style.css?v=63">
+<link rel="stylesheet" href="../assets/css/style.css?v=68">
 </head>
 <body>
 
@@ -75,13 +75,13 @@
     <!-- Kategori Filter Tabs -->
     <div class="cat-filter-wrap" role="tablist" aria-label="Filter Kategori Kegiatan">
       <button class="cat-pill active" onclick="filterCategory('all', this)" role="tab" aria-selected="true">
-        🌟 Semua <span class="count">12</span>
+        🌟 Semua <span class="count">13</span>
       </button>
       <button class="cat-pill" onclick="filterCategory('acara', this)" role="tab" aria-selected="false">
         🎉 Acara Sekolah <span class="count">4</span>
       </button>
       <button class="cat-pill" onclick="filterCategory('program', this)" role="tab" aria-selected="false">
-        🎒 Program Sekolah <span class="count">5</span>
+        🎒 Program Sekolah <span class="count">6</span>
       </button>
       <button class="cat-pill" onclick="filterCategory('rutin', this)" role="tab" aria-selected="false">
         📖 Aktivitas Rutin <span class="count">1</span>
@@ -92,6 +92,16 @@
     </div>
 
     <div class="list-row" id="kegiatan-list">
+      <a class="list-item" data-cat="program" href="kegiatan/kunjungan-dancow.html">
+        <img src="../assets/images/kegiatan/dancow/dancow-1.jpg?v=2" alt="Kunjungan &amp; Senam Dancow FortiGro" loading="lazy">
+        <div>
+          <div class="tgl">19 November 2026</div>
+          <span class="cat-badge program">Program Sekolah</span>
+          <h3>Kunjungan Edukatif &amp; Senam Dancow FortiGro</h3>
+          <p>Kegiatan hidup sehat, edukasi gizi seimbang, dan Senam Siap Sekolah bersama Dancow FortiGro di lingkungan SD Methodist-11 Medan.</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
       <a class="list-item" data-cat="prestasi" href="kegiatan/methodistnesia-2026.html">
         <img src="../assets/images/kegiatan/methodistnesia-2026/vokal-solo.jpg" alt="Finalis Methodistnesia 2026" loading="lazy">
         <div>
@@ -221,7 +231,7 @@
 
 <footer>
   © 2026 Yayasan Pendidikan Kristen Methodist Titus<br>TK-SD-SMP Swasta Methodist-11
-  <div class="footer-meta">Versi 0.0046</div>
+  <div class="footer-meta">Versi 0.0051</div>
 </footer>
 
   <div class="lightbox" id="lightbox" onclick="lightboxBg(event)">
