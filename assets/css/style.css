@@ -326,6 +326,38 @@ nav a.nav-cta:hover {
   background: var(--btn-bg) !important;
 }
 
+nav a.nav-erapor {
+  background: rgba(30, 64, 175, 0.08);
+  color: var(--biru) !important;
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] nav a.nav-erapor {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd !important;
+  border-color: rgba(147, 197, 253, 0.3);
+}
+
+nav a.nav-erapor:hover {
+  transform: translateY(-2px);
+  background: var(--biru) !important;
+  color: #ffffff !important;
+  border-color: var(--biru);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
+}
+
+[data-theme="dark"] nav a.nav-erapor:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
 .menu-toggle {
   display: none;
   background: var(--surface-2);
@@ -1754,58 +1786,7 @@ body.has-ticker .floating-toast {
   transform: rotate(15deg);
 }
 
-/* Secret Eraport Lock Button */
-.secret-lock-btn {
-  background: none;
-  border: none;
-  padding: 4px;
-  margin: 0;
-  font-size: 12px;
-  opacity: 0.35;
-  cursor: pointer;
-  line-height: 1;
-  transition: opacity 0.2s ease, transform 0.15s ease;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
 
-.secret-lock-btn:hover {
-  opacity: 0.85;
-  transform: scale(1.15);
-}
-
-.secret-lock-btn:active {
-  transform: scale(0.9);
-}
-
-/* PC Placement: Kanan atas di bawah header */
-.pc-secret-lock {
-  position: absolute;
-  top: 82px;
-  right: 24px;
-  z-index: 50;
-  display: block;
-}
-
-/* HP Placement: Di dalam menu garis 3 (dropdown) */
-.mobile-secret-lock {
-  display: none;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px dashed var(--border);
-  text-align: center;
-}
-
-@media (max-width: 767px) {
-  .pc-secret-lock {
-    display: none !important;
-  }
-  .mobile-secret-lock {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
 
 /* Dark Mode Global */
 [data-theme="dark"] {
@@ -2114,6 +2095,12 @@ body.has-ticker .floating-toast {
   nav a {
     padding: 10px 14px;
     font-size: 15px;
+  }
+  nav a.nav-erapor, nav a.nav-cta {
+    margin-top: 6px;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 10px 14px;
   }
   .menu-toggle { display: flex; align-items: center; justify-content: center; }
   .pengumuman {

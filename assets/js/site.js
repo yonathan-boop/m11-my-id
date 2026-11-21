@@ -259,19 +259,4 @@ if (announcementDialog) {
   if (!seen && today <= announcementDialog.dataset.expires) showAnnouncement();
 }
 
-// Secret Eraport Lock Button (4 tap cepat dalam rentang 1,5 detik)
-var _slCount = 0, _slFirst = 0, _slLast = 0;
-function handleSecretLock() {
-  var now = Date.now();
-  if (now - _slLast > 800 || now - _slFirst > 1500) {
-    _slCount = 0;
-    _slFirst = now;
-  }
-  _slLast = now;
-  _slCount++;
-  if (_slCount === 4) {
-    _slCount = 0;
-    window.open('https://ynserver.my.id/', '_blank');
-  }
 }
-window.handleSecretLock = handleSecretLock;
